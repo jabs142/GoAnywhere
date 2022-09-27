@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react"
 import {
-    Heading, Center
+    Grid, 
+    GridItem
     } from "@chakra-ui/react";
 import { DateTime } from 'luxon'
 import { NewsCard } from "./NewsCard";
@@ -14,7 +15,7 @@ export const NewsPage = () => {
     const searchCountry = (event) => {
         if (event.key === 'Enter') {
             axios.get(url).then((response) => {
-                setData(response.data)
+                setData(response.data.results)
                 console.log(response.data)
             })
         setCountry('');
@@ -36,17 +37,23 @@ export const NewsPage = () => {
             {country? null: <h2 style={{textAlign:"center"}}>Which country's news are you interested to find out? </h2>}
 
 
-            
 
-            <div className="news-card">
-                {data.map((datum,index) => <NewsCard
-                    key={index}
-                    title={datum.title}
-                    pubDate={datum.pubDate}
-                    link={datum.link}
-                    description={datum.description}
-                />)}
-            </div>
+        
+            <Grid> 
+                {data.map((datum,index) => (
+                <>
+                    <GridItem w='100%' h='100%' bg='blue.500'>
+                    <NewsCard
+                        key={index}
+                        title={datum.title}
+                        pubDate={datum.pubDate}
+                        link={datum.link}
+                        description={datum.description}
+                    />
+                    </GridItem>
+                </>
+                ))}
+            </Grid> 
         </div>
         </>
     )
