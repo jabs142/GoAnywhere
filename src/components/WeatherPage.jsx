@@ -1,7 +1,5 @@
 import axios from "axios"
 import {useState} from "react"
-import { HStack, Text, VStack } from "@chakra-ui/react";
- 
 
 
 export const WeatherPage = () => {
