@@ -1,7 +1,6 @@
 import "../style.css"
 import {Link , useNavigate} from "react-router-dom"
 import {HStack} from "@chakra-ui/react"
-import { right } from "@popperjs/core";
 
 
 export const Navbar = () => {

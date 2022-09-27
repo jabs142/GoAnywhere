@@ -4,6 +4,7 @@ import {HomePage} from "./components/HomePage"
 import {NewsPage} from "./components/NewsPage"
 import { WeatherPage } from './components/WeatherPage';
 
+
 function App() {
 
   return (
