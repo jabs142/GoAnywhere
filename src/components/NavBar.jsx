@@ -40,6 +40,10 @@ export const Navbar = () => {
                     className="nav--text" 
                     to="/weather"
                     style={linkStyle} > Weather </Link>
+                <Link 
+                    className="nav--text" 
+                    to="/currency"
+                    style={linkStyle} > Currency </Link>
             </HStack>
         </nav>
     )
