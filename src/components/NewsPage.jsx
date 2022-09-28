@@ -40,8 +40,7 @@ export const NewsPage = () => {
         
             <Grid templateColumns='repeat(5, 1fr)' gap={6}> 
                 {data.map((datum,index) => (
-                <>
-                    <GridItem w='100%' h='100%' bg='blue.500'>
+                    <GridItem w='100%' h="500px" overflow="hidden" p="10" background="white" underline="none">
                     <NewsCard className="news-card"
                         key={index}
                         title={datum.title}
@@ -50,7 +49,6 @@ export const NewsPage = () => {
                         description={datum.description}
                     />
                     </GridItem>
-                </>
                 ))}
             </Grid> 
         </div>
