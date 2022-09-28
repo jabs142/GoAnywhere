@@ -1,57 +1,47 @@
-import {useState} from "react"
+import { useState, useEffect } from "react"
 import {
-    Grid, 
+    Grid,
     GridItem
-    } from "@chakra-ui/react";
+} from "@chakra-ui/react";
 import { NewsCard } from "./NewsCard";
-import axios from "axios"
+import { countries } from "../../countries";
 
 export const NewsPage = () => {
-    const [data, setData] =  useState([])
-    const [country, setCountry] = useState("")
-    const url= `https://newsdata.io/api/1/news?apikey=pub_11086a11d8b1e80e5c7a2e7c8c0dfde15609f&q=breaking&country=${country}`
+    const [newsData, setNewsData] = useState([])
+    const [country, setCountry] = useState("Singapore")
+    const API_KEY = 'pub_11086a11d8b1e80e5c7a2e7c8c0dfde15609f'
+    const API_URL = `https://newsdata.io/api/1/news`
 
-    const searchCountry = (event) => {
-        if (event.key === 'Enter') {
-            axios.get(url).then((response) => {
-                setData(response.data.results)
-                console.log(response.data)
-            })
-        setCountry('');
-        }
-    }
+    useEffect(() => {
+        fetch(`${API_URL}?apikey=${API_KEY}&country=${countries[country]}`)
+            .then(res => res.json())
+            .then(data => setNewsData(data.results))
+    }, [country])
 
     return (
-        <>
         <div className="news-page">
             <div className="search">
-                <input 
-                type="text"
-                value={country}
-                onChange= {event => setCountry(event.target.value)}
-                placeholder="Enter country"
-                onKeyPress={searchCountry}
-                /> 
+                <select value={country} onChange={(event) => setCountry(event.target.value)}>
+                    {Object.keys(countries).map(country => (
+                        <option key={country} value={country}>{country}</option>
+                    ))}
+                </select>
             </div>
-            {country? null: <h2 style={{textAlign:"center", color:"white", backgroundColor:"black"}}>Which country's news are you interested to find out? </h2>}
+            {country ? null : <h2 style={{ textAlign: "center", color: "white", backgroundColor: "black" }}>Which country's news are you interested to find out? </h2>}
 
-
-
-        
-            <Grid templateColumns='repeat(5, 1fr)' gap={6}> 
-                {data.map((datum,index) => (
+            <Grid templateColumns='repeat(5, 1fr)' gap={6}>
+                {newsData.map((datum, index) => (
                     <GridItem w='100%' h="500px" overflow="hidden" p="10" background="white" underline="none">
-                    <NewsCard className="news-card"
-                        key={index}
-                        title={datum.title}
-                        pubDate={datum.pubDate}
-                        link={datum.link}
-                        description={datum.description}
-                    />
+                        <NewsCard className="news-card"
+                            key={index}
+                            title={datum.title}
+                            pubDate={datum.pubDate}
+                            link={datum.link}
+                            description={datum.description}
+                        />
                     </GridItem>
                 ))}
-            </Grid> 
+            </Grid>
         </div>
-        </>
     )
 }
