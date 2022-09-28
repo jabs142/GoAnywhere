@@ -23,7 +23,7 @@ export const NewsPage = () => {
 
     return (
         <>
-        <div className="app">
+        <div className="news-page">
             <div className="search">
                 <input 
                 type="text"
@@ -33,7 +33,7 @@ export const NewsPage = () => {
                 onKeyPress={searchCountry}
                 /> 
             </div>
-            {country? null: <h2 style={{textAlign:"center"}}>Which country's news are you interested to find out? </h2>}
+            {country? null: <h2 style={{textAlign:"center", color:"white", backgroundColor:"black"}}>Which country's news are you interested to find out? </h2>}
 
 
 
