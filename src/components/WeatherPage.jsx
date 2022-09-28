@@ -6,8 +6,7 @@ export const WeatherPage = () => {
 
     const [data,setData] = useState({})
     const [backgroundData, setBackgroundData] = useState({})
-    const [location, setLocation] = useState('Singapore') 
-    const [favorites, setFavorites] = useState([])
+    const [location, setLocation] = useState('')
 
     const url=`https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&cnt=1&appid=8883092dd8393d0eef92fbf43880aabd`
     const backgroundUrl=`https://api.unsplash.com/search/photos?per_page=1&orientation=landscape&query=${location}&client_id=iiXov6k8HnqIdxiXjGfnz7oNDzOlTSAdoYa-GHWTzXU`

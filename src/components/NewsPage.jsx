@@ -1,9 +1,8 @@
-import {useState, useEffect} from "react"
+import {useState} from "react"
 import {
     Grid, 
     GridItem
     } from "@chakra-ui/react";
-import { DateTime } from 'luxon'
 import { NewsCard } from "./NewsCard";
 import axios from "axios"
 
@@ -39,11 +38,11 @@ export const NewsPage = () => {
 
 
         
-            <Grid> 
+            <Grid templateColumns='repeat(5, 1fr)' gap={6}> 
                 {data.map((datum,index) => (
                 <>
                     <GridItem w='100%' h='100%' bg='blue.500'>
-                    <NewsCard
+                    <NewsCard className="news-card"
                         key={index}
                         title={datum.title}
                         pubDate={datum.pubDate}
