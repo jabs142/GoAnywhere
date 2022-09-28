@@ -1,6 +1,9 @@
 * {
     box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;;
 }
+
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap');
 
@@ -149,6 +152,8 @@ h1 {
     opacity: 0.8;
     overflow: scroll;
     background: url('./assets/news.jpeg') no-repeat center center/cover;
+    background-size: 100%;
+    padding:0;
 }
 
 .news-page .search {
@@ -246,11 +251,6 @@ h1 {
     color: azure;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-   }
-
 .news-title {
     font-size: 12;
     margin: 8px 0 0 0;
@@ -276,3 +276,37 @@ html, body {
 a {
     text-decoration: none;   
 }
+
+
+.currency-page {
+    display:inline-block;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    vertical-align: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+}
+
+.currency-row {
+    margin:0;
+    margin-bottom: 0.5rem;
+    padding: 20px;
+}
+
+.currency-input {
+    border: 1px solid rgb(8, 6, 6);
+    border-radius: 0.4em;
+    padding: 0.25rem;
+    width: 10em;
+    height: 3rem
+}
+
+.currency-select {
+    margin-left: 0.5rem;
+    width: 5rem;
+    height: 2.5rem;
+    background-color: rgba(236, 233, 233, 0.842);
+}
+
