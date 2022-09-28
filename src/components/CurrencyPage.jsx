@@ -1,75 +1,45 @@
 import { CurrencyRow } from "../CurrencyRow";
-import {useEffect, useState} from "react"
+import { useEffect, useState } from "react"
 
 export const CurrencyPage = () => {
-    const URL= "https://api.exchangerate.host/latest" 
-    const [currencyOptions, setCurrencyOptions] = useState([]);
-    const [currency1, setCurrency1] =useState()
-    const [currency2, setCurrency2] =useState()
-    const [exchangeRate, setExchangeRate] = useState()
-    const [amount, setAmount] = useState(1)
-    const [amountFromCurrency, setAmountFromCurrency] = useState(true)
+    const API_URL = "https://api.exchangerate.host"
+    const [currencies, setCurrencies] = useState([]);
+    const [fromAmount, setFromAmount] = useState(1)
+    const [fromCurrency, setFromCurrency] = useState('SGD')
+    const [toAmount, setToAmount] = useState(1)
+    const [toCurrency, setToCurrency] = useState('USD')
 
-    console.log(URL)
-
-    let toAmount, fromAmount 
-
-    if(amountFromCurrency) {
-        fromAmount = amount;
-        toAmount= amount * exchangeRate;
-    } else {
-        toAmount= amount;
-        fromAmount = amount/ exchangeRate;
-    }
-
+    // On mount, fetch and set all possible currencies
     useEffect(() => {
-        fetch(URL)
+        fetch(`${API_URL}/latest`)
             .then(res => res.json())
-            .then(data => {
-                const firstCurrencyInObject = Object.keys(data.rates)[0]
-                setCurrencyOptions([data.base, ...Object.keys(data.rates)])
-                setCurrency1(data.base)
-                setCurrency2(firstCurrencyInObject)
-                setExchangeRate(data.rates[firstCurrencyInObject])
-            })
+            .then(data => setCurrencies(Object.keys(data.rates)))
     }, [])
 
-
     useEffect(() => {
-        if (currency1 != null && currency2 != null) {
-          fetch(`${URL}?base=${currency1}&symbols=${currency2}`)
+        fetch(`${API_URL}/convert?from=${fromCurrency}&to=${toCurrency}&amount=${fromAmount}`)
             .then(res => res.json())
-            .then(data => setExchangeRate(data.rates[currency2]))
-        }
-      }, [currency1,currency2])
-
-    function handleFromAmountChange(e) {
-        setAmount(e.target.value)
-        setAmountFromCurrency(true)
-    }
-
-    function handleToAmountChange(e) {
-        setAmount(e.target.value)
-        setAmountFromCurrency(false)
-    }
+            .then(data => setToAmount(data.result))
+    }, [fromCurrency, toCurrency, fromAmount])
 
     return (
         <div className="currency-page">
-            <h1> Convert currency </h1> 
-            <CurrencyRow 
-                currencyOptions={currencyOptions}
-                selectCurrency={currency1}
-                onChangeCurrency={e=> setCurrency1(e.target.value)}
-                onChangeAmount={handleFromAmountChange}
-                amount= {fromAmount}
-            /> 
+            <h1> Convert currency </h1>
+            <CurrencyRow
+                currencies={currencies}
+                selectedCurrency={fromCurrency}
+                onChangeCurrency={event => setFromCurrency(event.target.value)}
+                onChangeAmount={(event) => setFromAmount(event.target.value)}
+                amount={fromAmount}
+            />
             <div> = </div>
-            <CurrencyRow 
-                currencyOptions={currencyOptions}
-                selectCurrency={currency2}
-                onChangeCurrency={e=> setCurrency2(e.target.value)}
-                onChangeAmount={handleToAmountChange}
-                amount= {toAmount}
+            <CurrencyRow
+                currencies={currencies}
+                selectedCurrency={toCurrency}
+                onChangeCurrency={event => setToCurrency(event.target.value)}
+                onChangeAmount={(event) => setToAmount(event.target.value)}
+                amount={toAmount}
+                disabled={true}
             />
         </div>
     )
