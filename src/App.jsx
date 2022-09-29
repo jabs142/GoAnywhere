@@ -6,7 +6,7 @@ import { WeatherPage } from './components/WeatherPage';
 import { CurrencyPage } from './components/CurrencyPage';
 import { FavoritesPage } from './components/FavoritesPage';
 import _ from 'lodash'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 
 function App() {

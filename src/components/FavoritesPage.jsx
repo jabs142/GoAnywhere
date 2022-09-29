@@ -1,5 +1,3 @@
-import axios from "axios"
-import { useState } from "react"
 import { FavoriteCard } from "./FavoriteCard";
 import { SimpleGrid } from '@chakra-ui/react'
 
