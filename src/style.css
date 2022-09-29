@@ -285,8 +285,11 @@ a {
     align-items: center;
     vertical-align: center;
     min-height: 100vh;
+    min-width: 100%;
     text-align: center;
     padding: 20px;
+    background-color: rgb(102, 144, 180)
+
 }
 
 .currency-row {

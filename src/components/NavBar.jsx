@@ -6,8 +6,7 @@ import {HStack} from "@chakra-ui/react"
 export const Navbar = () => {
     const navigate = useNavigate();
     const goHome = () => {
-        console.log("Home");
-        navigate("/home")
+        navigate("/")
     }
 
     const linkStyle = {
@@ -30,7 +29,7 @@ export const Navbar = () => {
                 <h2 className="nav--title"> Where will you go? </h2>
                 <Link 
                     className="nav--text" 
-                    to="/home"
+                    to="/"
                     style={linkStyle}> Home </Link>
                 <Link 
                     className="nav--text" 
