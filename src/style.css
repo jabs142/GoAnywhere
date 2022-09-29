@@ -73,7 +73,7 @@ h1 {
 
 .btn1{
     position: absolute;
-    top: 50%;
+    top: 75%;
     left: 35%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -96,7 +96,7 @@ h1 {
 
 .btn2{
     position: absolute;
-    top: 50%;
+    top: 75%;
     left: 48%;
     opacity: 0.7;
     transform: translate(-50%, -50%);
@@ -121,7 +121,7 @@ h1 {
 
 .btn3{
     position: absolute;
-    top: 50%;
+    top: 75%;
     left: 62%;
     opacity: 0.7;
     transform: translate(-50%, -50%);
