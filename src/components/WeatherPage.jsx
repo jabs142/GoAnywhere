@@ -40,7 +40,6 @@ export const WeatherPage = ({ handleFavoriteItem }) => {
         <div className="app"
             style={{ backgroundImage: `url(${backgroundData})` }}>
             <div className="weather-row">
-                <button className="favorite-button" onClick={favoriteItem}>favorite</button>
                 <div className="search">
                     <input
                         type="text"
@@ -49,6 +48,7 @@ export const WeatherPage = ({ handleFavoriteItem }) => {
                         placeholder="Enter location"
                         onKeyPress={searchLocation}
                     />
+                <button className="favorite-button" onClick={favoriteItem}>Favorite</button>
                 </div>
             </div>
         <div className="container">
