@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 
 
-export const WeatherPage = () => {
+export const WeatherPage = ({ handleFavoriteItem }) => {
 
     const [data, setData] = useState({})
     const [backgroundData, setBackgroundData] = useState({})
@@ -18,20 +18,27 @@ export const WeatherPage = () => {
                 console.log(response.data)
                 axios.get(backgroundUrl).then((response) => {
                     setBackgroundData(response.data.results[0].urls.full)
-                    console.log(location)
-                    console.log(backgroundUrl)
-                    console.log("BG data:", response)
-
                 })
             })
             setLocation('');
         }
     }
 
+    const favoriteItem = () => {
+        if (data.city) {
+            handleFavoriteItem({
+                countryName: data.city.name,
+                temp: data.list[0].main.temp.toFixed(),
+                tempMin: data.list[0].main.temp_min.toFixed(),
+                tempMax: data.list[0].main.temp_max.toFixed(),
+            })
+        }
+    }
 
     return (
         <div className="app"
             style={{ backgroundImage: `url(${backgroundData})` }}>
+            <button onClick={favoriteItem}>favorite</button>
             <div className="search">
                 <input
                     type="text"
@@ -55,24 +62,22 @@ export const WeatherPage = () => {
                         {data.weather ? <p> {data.list[0].weather[0].description}</p> : null}
                     </div>
                 </div>
-            </div>
 
-            <div className="bottom">
-                <div className="feels">
-                    {data.list ? <p className="bold"> {data.list[0].main.feels_like.toFixed()}°C</p> : null}
-                    <p>Feels like</p>
-                </div>
-                <div className="humidity">
-                    {data.list ? <p className="bold">{data.list[0].main.humidity}%</p> : null}
-                    <p>Humidity</p>
-                </div>
-                <div className="wind">
-                    {data.list ? <p className="bold">{data.list[0].wind.speed.toFixed()} MPH </p> : null}
-                    <p>Wind speed</p>
+                <div className="bottom">
+                    <div className="feels">
+                        {data.list ? <p className="bold"> {data.list[0].main.feels_like.toFixed()}°C</p> : null}
+                        <p>Feels like</p>
+                    </div>
+                    <div className="humidity">
+                        {data.list ? <p className="bold">{data.list[0].main.humidity}%</p> : null}
+                        <p>Humidity</p>
+                    </div>
+                    <div className="wind">
+                        {data.list ? <p className="bold">{data.list[0].wind.speed.toFixed()} MPH </p> : null}
+                        <p>Wind speed</p>
+                    </div>
                 </div>
             </div>
-
         </div>
-
     )
 }

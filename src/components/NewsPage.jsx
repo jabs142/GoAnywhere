@@ -9,14 +9,16 @@ import { countries } from "../../countries";
 export const NewsPage = () => {
     const [newsData, setNewsData] = useState([])
     const [country, setCountry] = useState("Singapore")
+    const [newsCategory, setNewsCategory] = useState("Top")
     const API_KEY = 'pub_11086a11d8b1e80e5c7a2e7c8c0dfde15609f'
     const API_URL = `https://newsdata.io/api/1/news`
+    const newsCategories = ["Business", "Entertainment", "Environment", "Food", "Health", "Politics", "Science", "Sports", "Technology", "Top"]
 
     useEffect(() => {
-        fetch(`${API_URL}?apikey=${API_KEY}&country=${countries[country]}`)
+        fetch(`${API_URL}?apikey=${API_KEY}&country=${countries[country]}&category=${newsCategory}`)
             .then(res => res.json())
             .then(data => setNewsData(data.results))
-    }, [country])
+    }, [country, newsCategory])
 
     return (
         <div className="news-page">
@@ -24,6 +26,11 @@ export const NewsPage = () => {
                 <select value={country} onChange={(event) => setCountry(event.target.value)}>
                     {Object.keys(countries).map(country => (
                         <option key={country} value={country}>{country}</option>
+                    ))}
+                </select>
+                <select value={newsCategory} onChange={(event) => setNewsCategory(event.target.value)}>
+                    {newsCategories.map(category => (
+                        <option key={category} value={category}>{category}</option>
                     ))}
                 </select>
             </div>

@@ -1,9 +1,7 @@
 import {
     Box,
-    Heading,
     LinkBox,
     LinkOverlay,
-    Text
 } from "@chakra-ui/react";
 import { DateTime } from 'luxon'
 
