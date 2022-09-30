@@ -1,6 +1,5 @@
 import axios from "axios"
 import { useState } from "react"
-import { StarIcon } from '@chakra-ui/icons'
 
 
 export const WeatherPage = ({ handleFavoriteItem }) => {
@@ -22,6 +21,7 @@ export const WeatherPage = ({ handleFavoriteItem }) => {
                 })
             })
             setLocation('');
+            console.log(response.data)
         }
     }
 
@@ -32,6 +32,8 @@ export const WeatherPage = ({ handleFavoriteItem }) => {
                 temp: data.list[0].main.temp.toFixed(),
                 tempMin: data.list[0].main.temp_min.toFixed(),
                 tempMax: data.list[0].main.temp_max.toFixed(),
+                description: data.list[0].weather[0].description,
+                imageUrl: backgroundData
             })
         }
     }
@@ -62,7 +64,7 @@ export const WeatherPage = ({ handleFavoriteItem }) => {
                     {data.list ? <h3> Temp Max: {data.list[0].main.temp_max.toFixed()}°C</h3> : null}
                 </div>
                 <div className="description">
-                    {data.weather ? <p> {data.list[0].weather[0].description}</p> : null}
+                    {data.weather ? <h3> {data.list[0].weather[0].description}</h3> : null}
                 </div>
             </div>
 

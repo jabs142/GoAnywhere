@@ -8,14 +8,17 @@ export const FavoritesPage = ({ items, handleDeleteItem }) => {
     
         <div className="favorite-page">
             <SimpleGrid minChildWidth='120px' spacingX='40px' spacingY='20px' margin="20px" padding="20px">
-                {items.map(({ countryName, temp, tempMin, tempMax }, index) =>
+                {items.map(({ countryName, temp, tempMin, tempMax, description, imageUrl }, index) =>
                     <FavoriteCard padding="20px"
                         key={index}
+                        imageUrl= {imageUrl}
                         handleDelete={() => handleDeleteItem(countryName)}
                         countryName={`Country name: ${countryName} `}
                         temp={`Current temperature: ${temp} °C`}
                         tempMin={`Minimum temperature: ${tempMin} °C`}
-                        tempMax={`Maximum temperature: ${tempMax}°C`} />
+                        tempMax={`Maximum temperature: ${tempMax}°C`} 
+                        description= {description} />
+                        
 
                 )}
             </SimpleGrid>

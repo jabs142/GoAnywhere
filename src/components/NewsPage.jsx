@@ -36,9 +36,9 @@ export const NewsPage = () => {
             </div>
             {country ? null : <h2 style={{ textAlign: "center", color: "white", backgroundColor: "black" }}>Which country's news are you interested to find out? </h2>}
 
-            <Grid templateColumns='repeat(5, 1fr)' gap={6}>
+            <Grid templateColumns='repeat(5, 1fr)' gap={20} margin="40px" padding="40px">
                 {newsData.map((datum, index) => (
-                    <GridItem w='100%' h="500px" overflow="hidden" p="10" background="white" underline="none">
+                    <GridItem w='100%' h="500px" overflow="hidden" p="10" background="white" underline="none" border="1px" borderRadius="md" borderColor="gray.200">
                         <NewsCard className="news-card"
                             key={index}
                             title={datum.title}
