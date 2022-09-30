@@ -24,7 +24,7 @@ export const Navbar = () => {
 
     return (
         <nav className="nav">
-            <HStack spacing={8} h='20px'>
+            <HStack spacing={10} h='20px'>
                 <img src="src/assets/planeIcon.png" className="nav--image" onClick={goHome} />
                 <h2 className="nav--title"> Where will you go? </h2>
                 <Link
@@ -37,12 +37,13 @@ export const Navbar = () => {
                     style={linkStyle} > News </Link>
                 <Link
                     className="nav--text"
-                    to="/weather"
-                    style={linkStyle} > Weather </Link>
-                <Link
-                    className="nav--text"
                     to="/currency"
                     style={linkStyle} > Currency </Link>
+                <Link
+                    className="nav--text"
+                    to="/weather"
+                    style={linkStyle} > Weather </Link>
+              
                 <Link
                     className="nav--text"
                     to="/favorites"

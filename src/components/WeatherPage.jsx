@@ -1,12 +1,13 @@
 import axios from "axios"
 import { useState } from "react"
-
+import { useToast } from '@chakra-ui/react'
 
 export const WeatherPage = ({ handleFavoriteItem }) => {
 
     const [data, setData] = useState({})
     const [backgroundData, setBackgroundData] = useState({})
     const [location, setLocation] = useState('')
+    const toast = useToast()
 
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&cnt=1&appid=8883092dd8393d0eef92fbf43880aabd`
     const backgroundUrl = `https://api.unsplash.com/search/photos?per_page=1&orientation=landscape&query=${location}&client_id=iiXov6k8HnqIdxiXjGfnz7oNDzOlTSAdoYa-GHWTzXU`
@@ -21,7 +22,6 @@ export const WeatherPage = ({ handleFavoriteItem }) => {
                 })
             })
             setLocation('');
-            console.log(response.data)
         }
     }
 
@@ -35,6 +35,14 @@ export const WeatherPage = ({ handleFavoriteItem }) => {
                 description: data.list[0].weather[0].description,
                 imageUrl: backgroundData
             })
+
+            toast({
+                title: 'Account created.',
+                description: "We've created your account for you.",
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+              })
         }
     }
 
