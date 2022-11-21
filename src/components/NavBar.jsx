@@ -25,7 +25,7 @@ export const Navbar = () => {
     return (
         <nav className="nav">
             <HStack spacing={10} h='20px'>
-                <img src="src/assets/planeIcon.png" className="nav--image" onClick={goHome} />
+                <img src="https://cdn-icons-png.flaticon.com/512/0/614.png" className="nav--image" onClick={goHome} />
                 <h2 className="nav--title"> Where will you go? </h2>
                 <Link
                     className="nav--text"
