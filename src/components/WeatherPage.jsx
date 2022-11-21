@@ -42,7 +42,7 @@ export const WeatherPage = ({ handleFavoriteItem }) => {
                 status: 'success',
                 duration: 9000,
                 isClosable: true,
-              })
+            })
         }
     }
 
@@ -58,39 +58,41 @@ export const WeatherPage = ({ handleFavoriteItem }) => {
                         placeholder="Enter location"
                         onKeyPress={searchLocation}
                     />
-                <button className="favorite-button" onClick={favoriteItem}>Favorite</button>
+                    <button className="favorite-button" onClick={favoriteItem}>Favorite</button>
                 </div>
             </div>
-        <div className="container">
-            <div className="top">
-                <div className="location">
-                    {data.city ? <p> {data.city.name} </p> : null}
-                </div>
-                <div className="temperature">
-                    {data.list ? <h1>{data.list[0].main.temp.toFixed()}°C</h1> : null}
-                    {data.list ? <h3> Temp Min: {data.list[0].main.temp_min.toFixed()}°C</h3> : null}
-                    {data.list ? <h3> Temp Max: {data.list[0].main.temp_max.toFixed()}°C</h3> : null}
-                </div>
-                <div className="description">
-                    {data.weather ? <h3> {data.list[0].weather[0].description}</h3> : null}
-                </div>
-            </div>
+            {data.list ? null : <h2 className="instructions-weather"> Begin by typing in a location</h2>}
 
-            <div className="bottom">
-                <div className="feels">
-                    {data.list ? <p className="bold"> {data.list[0].main.feels_like.toFixed()}°C</p> : null}
-                    <p>Feels like</p>
+            <div className="container">
+                <div className="top">
+                    <div className="location">
+                        {data.city ? <p> {data.city.name} </p> : null}
+                    </div>
+                    <div className="temperature">
+                        {data.list ? <h1>{data.list[0].main.temp.toFixed()}°C</h1> : null}
+                        {data.list ? <h3> Temp Min: {data.list[0].main.temp_min.toFixed()}°C</h3> : null}
+                        {data.list ? <h3> Temp Max: {data.list[0].main.temp_max.toFixed()}°C</h3> : null}
+                    </div>
+                    <div className="description">
+                        {data.weather ? <h3> {data.list[0].weather[0].description}</h3> : null}
+                    </div>
                 </div>
-                <div className="humidity">
-                    {data.list ? <p className="bold">{data.list[0].main.humidity}%</p> : null}
-                    <p>Humidity</p>
-                </div>
-                <div className="wind">
-                    {data.list ? <p className="bold">{data.list[0].wind.speed.toFixed()} MPH </p> : null}
-                    <p>Wind speed</p>
+
+                <div className="bottom">
+                    <div className="feels">
+                        {data.list ? <p className="bold"> {data.list[0].main.feels_like.toFixed()}°C</p> : null}
+                        {data.list ? < p > Feels like</p> : null}
+                    </div>
+                    <div className="humidity">
+                        {data.list ? <p className="bold">{data.list[0].main.humidity}%</p> : null}
+                        {data.list ? < p > Humidity</p> : null}
+                    </div>
+                    <div className="wind">
+                        {data.list ? <p className="bold">{data.list[0].wind.speed.toFixed()} MPH </p> : null}
+                        {data.list ? < p > Wind speed</p> : null}
+                    </div>
                 </div>
             </div>
-        </div>
         </div >
     )
 }

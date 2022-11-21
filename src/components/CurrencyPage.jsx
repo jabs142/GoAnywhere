@@ -41,6 +41,7 @@ export const CurrencyPage = () => {
                 amount={toAmount}
                 disabled={true}
             />
+            <h2 className="instructions-currency"> Currency information from ExchangeRate API</h2>
         </div>
     )
 }

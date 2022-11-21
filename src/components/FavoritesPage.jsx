@@ -7,6 +7,7 @@ export const FavoritesPage = ({ items, handleDeleteItem }) => {
 
 
         <div className="favorite-page">
+            <h2 className="instructions-favorites"> After adding favorites in the weather page, the respective countries will be appear here. Weather information from OpenWeatherMap and images from Unsplashed API </h2>
             <SimpleGrid minChildWidth='120px' spacingX='40px' spacingY='20px' margin="20px" padding="20px" columns={2} >
                 {items.map(({ countryName, temp, tempMin, tempMax, description, imageUrl }, index) =>
                     <FavoriteCard padding="20px"

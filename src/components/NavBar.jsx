@@ -43,11 +43,11 @@ export const Navbar = () => {
                     className="nav--text"
                     to="/weather"
                     style={linkStyle} > Weather </Link>
-              
+
                 <Link
                     className="nav--text"
                     to="/favorites"
-                    style={linkStyle} > Favorites </Link>
+                    style={linkStyle} > Favorites  </Link>
             </HStack>
         </nav>
     )

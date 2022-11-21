@@ -22,6 +22,7 @@ export const NewsPage = () => {
 
     return (
         <div className="news-page">
+            <h2 className="instructions-news"> Find out more about your destination country. News data from NewsData IO</h2>
             <div className="search">
                 <select value={country} onChange={(event) => setCountry(event.target.value)}>
                     {Object.keys(countries).map(country => (
