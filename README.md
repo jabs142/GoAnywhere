@@ -1,4 +1,4 @@
-# ✈️  Project 2 - Travel planning website 
+# ✈️  GoAnywhere
 
 ## 💻 Technologies & Tools Used
 - JavaScript 
